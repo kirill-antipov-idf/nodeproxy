@@ -49,8 +49,9 @@ app.use('/', proxy(process.env.ORIGINAL_SERVER_URL, {
 
             proxyReqOpts.headers['cookie'] = cookies;
         }
-
+        console.log("test1");
         if (process.env.API_KEY) {
+            console.log("test");
             proxyReqOpts.headers["Authorization"] = `Bearer ${process.env.API_KEY}`
         }
 
