@@ -51,7 +51,7 @@ app.use('/', proxy(process.env.ORIGINAL_SERVER_URL, {
         }
 
         if (process.env.API_KEY) {
-            headers["Authorization"] = `Bearer ${process.env.API_KEY}`
+            proxyReqOpts.headers["Authorization"] = `Bearer ${process.env.API_KEY}`
         }
 
         return proxyReqOpts;
