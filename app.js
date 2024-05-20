@@ -36,10 +36,6 @@ app.use('/', proxy(process.env.ORIGINAL_SERVER_URL, {
             cookiePerIP.set(key, currentCookies);
         }
 
-        if (process.env.API_KEY) {
-            headers["Authorization"] = `Bearer ${process.env.API_KEY}`
-        }
-
         return headers;
     },
     proxyReqOptDecorator: function(proxyReqOpts, srcReq) {
@@ -52,6 +48,10 @@ app.use('/', proxy(process.env.ORIGINAL_SERVER_URL, {
                 .join(';')
 
             proxyReqOpts.headers['cookie'] = cookies;
+        }
+
+        if (process.env.API_KEY) {
+            headers["Authorization"] = `Bearer ${process.env.API_KEY}`
         }
 
         return proxyReqOpts;
